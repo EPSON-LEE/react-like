@@ -1,0 +1,15 @@
+{
+  // 预置
+  "presets": [
+    [
+      "@babel/env", {
+      "modules": false
+    }], [
+      "@babel/preset-react", {
+        "pragma": "React.createElement", // default pragma is React.createElement
+        "pragmaFrag": "React.Fragment", // default is React.Fragment
+        "throwIfNamespace": false // defaults to true
+      }
+    ]
+  ]
+}
