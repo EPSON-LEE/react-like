@@ -34,7 +34,15 @@
       attrs: attrs,
       children: children
     };
-  } // 此处研究下 vnode 结构
+  }
+  /**
+   * virtual dom的结构
+   * 
+   * attrs
+   * children
+   * tag
+   * 
+   */
 
   /**
    * @description: Trans virtual dom to the real dom
@@ -46,11 +54,14 @@
 
   function _render(vnode, container) {
     // 如果是文本的话则认为参数是一个文本节点
+    debugger;
+
     if (typeof vnode === 'string') {
       var textNode = document.createTextNode(vnode);
       return container.appendChild(textNode);
     }
 
+    debugger;
     var dom = document.createElement(vnode.tag); // 属性存在时，设置dom的属性节点
 
     if (vnode.attrs) {
@@ -116,6 +127,8 @@
       return _render(vnode, container);
     }
   };
-  ReactDOM.render(React.createElement("h1", null, "Hello, world!"), document.getElementById('root'));
+  ReactDOM.render(React.createElement("h1", {
+    style: "color:red"
+  }, "Hello, world!"), document.getElementById('root'));
 
 }));

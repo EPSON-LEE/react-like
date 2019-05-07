@@ -13,7 +13,14 @@ function createElement(tag, attrs, ...children) {
   }
 }
 
-// 此处研究下 vnode 结构
+/**
+ * virtual dom的结构
+ * 
+ * attrs
+ * children
+ * tag
+ * 
+ */
 
 /**
  * @description: Trans virtual dom to the real dom
@@ -23,14 +30,16 @@ function createElement(tag, attrs, ...children) {
  */
 function render(vnode, container) {
   // 如果是文本的话则认为参数是一个文本节点
+  debugger
   if (typeof vnode === 'string') {
     const textNode = document.createTextNode(vnode)
     return container.appendChild(textNode)
   }
-
+  debugger
+  // 创建一个 vnode.tag节点
   const dom = document.createElement(vnode.tag)
 
-  // 属性存在时，设置dom的属性节点
+  // 属性存在时，设置节点的属性
   if (vnode.attrs) {
     Object.keys(vnode.attrs).forEach(key => {
       const value = vnode.attrs[key]
@@ -95,4 +104,6 @@ const ReactDOM = {
   }
 }
 
-ReactDOM.render(<h1>Hello, world!</h1>, document.getElementById('root'))
+ReactDOM.render(
+  <h1 style="color:red">Hello, world!</h1>,
+  document.getElementById('root'))
