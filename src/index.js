@@ -8,7 +8,7 @@ class Counter extends React.Component {
       num: 0
     }
   }
-
+  
   componentWillUpdate() {
     console.log('update')
   }
@@ -29,7 +29,7 @@ class Counter extends React.Component {
     return (
       <div onClick={() => this.onClick()}>
         <h1>number: {this.state.num}</h1>
-        <button>add</button>
+        <button>add3</button>
       </div>
     )
   }

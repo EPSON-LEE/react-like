@@ -306,7 +306,7 @@
           onClick: function onClick() {
             return _this2.onClick();
           }
-        }, React.createElement("h1", null, "number: ", this.state.num), React.createElement("button", null, "add"));
+        }, React.createElement("h1", null, "number: ", this.state.num), React.createElement("button", null, "add3"));
       }
     }]);
 
@@ -316,3 +316,4 @@
   ReactDOM.render(React.createElement(Counter, null), document.getElementById('root'));
 
 }));
+//# sourceMappingURL=index.js.map
