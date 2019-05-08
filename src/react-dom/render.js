@@ -2,6 +2,7 @@ import Component from '../react/component'
 import { setAttribute } from './dom'
 
 function createComponent(component, props) {
+  debugger
   let inst
 
   if (component.prototype && component.prototype.render) {

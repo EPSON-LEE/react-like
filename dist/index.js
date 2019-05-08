@@ -123,6 +123,7 @@
   }
 
   function createComponent(component, props) {
+    debugger;
     var inst;
 
     if (component.prototype && component.prototype.render) {
