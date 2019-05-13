@@ -1,8 +1,12 @@
 import Component from '../react/component'
 import { setAttribute } from './dom'
 
+/**
+ * 创建一个组件
+ * @param {*} component 
+ * @param {*} props 
+ */
 function createComponent(component, props) {
-  debugger
   let inst
 
   if (component.prototype && component.prototype.render) {
@@ -35,11 +39,11 @@ function setComponentProps(component, props) {
   renderComponent(component)
 }
 
+// 渲染组件 挂上生命周期
 export function renderComponent(component) {
   let base
 
   const renderer = component.render()
-
   if (component.base && component.componentWillUpdate) {
     component.componentWillUpdate()
   }
@@ -61,6 +65,7 @@ export function renderComponent(component) {
   base._component = component
 }
 
+// 渲染函数 virtual dom -> real dom
 function _render(vnode) {
   if (vnode === undefined || vnode === null || typeof vnode === 'boolean')
     vnode = ''
@@ -85,7 +90,6 @@ function _render(vnode) {
   if (vnode.attrs) {
     Object.keys(vnode.attrs).forEach(key => {
       const value = vnode.attrs[key]
-
       setAttribute(dom, key, value)
     })
   }

@@ -122,8 +122,13 @@
     }
   }
 
+  /**
+   * 创建一个组件
+   * @param {*} component 
+   * @param {*} props 
+   */
+
   function createComponent(component, props) {
-    debugger;
     var inst;
 
     if (component.prototype && component.prototype.render) {
@@ -149,7 +154,8 @@
 
     component.props = props;
     renderComponent(component);
-  }
+  } // 渲染组件 挂上生命周期
+
 
   function renderComponent(component) {
     var base;
@@ -174,7 +180,7 @@
 
     component.base = base;
     base._component = component;
-  }
+  } // 渲染函数 virtual dom -> real dom
 
   function _render(vnode) {
     if (vnode === undefined || vnode === null || typeof vnode === 'boolean') vnode = '';
@@ -259,6 +265,10 @@
     renderComponent: renderComponent
   };
 
+  var Test = function Test() {
+    return React.createElement("div", null, "1111");
+  };
+
   var Counter =
   /*#__PURE__*/
   function (_React$Component) {
@@ -269,6 +279,7 @@
 
       _classCallCheck(this, Counter);
 
+      console.log(111111);
       _this = _possibleConstructorReturn(this, _getPrototypeOf(Counter).call(this, props));
       _this.state = {
         num: 0
@@ -292,6 +303,11 @@
         console.log('unmount');
       }
     }, {
+      key: "componentWillReceiveComponent",
+      value: function componentWillReceiveComponent() {
+        console.log('componentWillReceiveComponent');
+      }
+    }, {
       key: "onClick",
       value: function onClick() {
         this.setState({
@@ -307,7 +323,7 @@
           onClick: function onClick() {
             return _this2.onClick();
           }
-        }, React.createElement("h1", null, "number: ", this.state.num), React.createElement("button", null, "add3"));
+        }, React.createElement(Test, null), React.createElement("h1", null, "number: ", this.state.num), React.createElement("button", null, "add3"));
       }
     }]);
 
